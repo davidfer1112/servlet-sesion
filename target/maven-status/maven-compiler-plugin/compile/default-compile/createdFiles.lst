@@ -9,6 +9,7 @@ org\example\services\LoginService.class
 org\example\services\LoginServiceCookieImpl.class
 org\example\controllers\LogOutServlet.class
 org\example\models\Producto.class
+org\example\listeners\AplicacionListener.class
 org\example\controllers\AgregarCarroServlet.class
 org\example\models\ItemCarro.class
 org\example\controllers\LoginServlet.class
