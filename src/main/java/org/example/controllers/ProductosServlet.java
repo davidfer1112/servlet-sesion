@@ -18,7 +18,7 @@ public class ProductosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductoService service = new ProductoServiceImpl();
-        List<Producto> productos = service.getAll();
+        List<Producto> productos = service.listar();
 
         LoginService auth = new LoginServiceSessionImpl();
         Optional<String> usernameOptional = auth.getUsername(req);
@@ -26,43 +26,44 @@ public class ProductosServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = resp.getWriter()) {
 
-
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("    <head>");
             out.println("        <meta charset=\"UTF-8\">");
-            out.println("        <title>Listado de productos</title>");
+            out.println("        <title>Listado de Productos</title>");
             out.println("    </head>");
             out.println("    <body>");
-            out.println("        <h1>Listado de productos</h1>");
-            if (usernameOptional.isPresent()){
-                out.println("        <h2 style= 'color:blue;'>Bienvenido " + usernameOptional.get() + "</h2>");
+            out.println("        <h1>Listado de Productos!</h1>");
+            if(usernameOptional.isPresent()) {
+                out.println("<div style='color: blue;'>Hola " + usernameOptional.get() + " Bienvenido!</div>");
             }
-            out.println("        <table>");
-            out.println("            <tr>");
-            out.println("                <th>Id</th>");
-            out.println("                <th>Nombre</th>");
-            out.println("                <th>Tipo</th>");
-            if (usernameOptional.isPresent() && usernameOptional.get().equals("admin")) {
-                out.println("                <th>Precio</th>");
+            out.println("<table>");
+            out.println("<tr>");
+            out.println("<th>id</th>");
+            out.println("<th>nombre</th>");
+            out.println("<th>tipo</th>");
+            if(usernameOptional.isPresent()) {
+                out.println("<th>precio</th>");
+                out.println("<th>agregar</th>");
             }
-            out.println("            </tr>");
+            out.println("</tr>");
             productos.forEach(p -> {
-                out.println("            <tr>");
-                out.println("                <td>" + p.getId() + "</td>");
-                out.println("                <td>" + p.getNombre() + "</td>");
-                out.println("                <td>" + p.getTipo() + "</td>");
-                if (usernameOptional.isPresent() && usernameOptional.get().equals("admin")) {
-                    out.println("                <td>" + p.getPrecio() + "</td>");
+                out.println("<tr>");
+                out.println("<td>" + p.getId() + "</td>");
+                out.println("<td>" + p.getNombre() + "</td>");
+                out.println("<td>" + p.getTipo() + "</td>");
+                if(usernameOptional.isPresent()) {
+                    out.println("<td>" + p.getPrecio() + "</td>");
+                    out.println("<td><a href=\""
+                            + req.getContextPath()
+                            + "/agregar-carro?id=" + p.getId()
+                            + "\">agregar al carro</a></td>");
                 }
-                out.println("            </tr>");
+                out.println("</tr>");
             });
-            out.println("        </table>");
-
+            out.println("</table>");
             out.println("    </body>");
             out.println("</html>");
-
         }
-
     }
 }
