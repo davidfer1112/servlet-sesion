@@ -59,7 +59,7 @@ public class ProductosServlet extends HttpServlet {
                     out.println("<td>" + p.getPrecio() + "</td>");
                     out.println("<td><a href=\""
                             + req.getContextPath()
-                            + "/agregar-carro?id=" + p.getId()
+                            + "/carro/agregar?id=" + p.getId()
                             + "\">agregar al carro</a></td>");
                 }
                 out.println("</tr>");
