@@ -20,6 +20,7 @@ Optional<String> username = (Optional<String>) request.getAttribute("username");
     <%if(username.isPresent()){%>
     <div>
         Hola <%=username.get()%>, bienvenido
+        <p><a href="<%=request.getContextPath()%>/producto/form">Crear [+]</a></p>
     </div>
     <%}%>
 
@@ -31,16 +32,21 @@ Optional<String> username = (Optional<String>) request.getAttribute("username");
             <%if(username.isPresent()){%>
             <th>Precio</th>
             <th>Agregar</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
             <%}%>
         </tr>
         <% for(Producto p: productos){%>
             <tr>
                 <td><%=p.getId()%></td>
                 <td><%=p.getNombre()%></td>
-                <td><%=p.getTipo()%></td>
+                <td><%=p.getCategoria().getNombre()%></td>
                 <%if(username.isPresent()){%>
                 <td><%=p.getPrecio()%></td>
                 <td><a href="<%=request.getContextPath()%>/carro/agregar?id=<%=p.getId()%>">Agregar</a></td>
+                <td><a href="<%=request.getContextPath()%>/producto/form?id=<%=p.getId()%>">Editar</a></td>
+                <td><a onclick="return confirm('¿Estás seguro de eliminar este producto?')"
+                        href="<%=request.getContextPath()%>/producto/eliminar?id=<%=p.getId()%>">Eliminar</a></td>
                 <%}%>
             </tr>
         <%}%>
