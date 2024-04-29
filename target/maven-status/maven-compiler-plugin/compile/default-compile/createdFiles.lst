@@ -6,8 +6,12 @@ org\example\services\ProductoService.class
 org\example\controllers\ProductosServlet.class
 org\example\services\LoginService.class
 org\example\services\ServiceJdbcException.class
+org\example\services\UsuarioServiceImpl.class
+org\example\services\UsuarioService.class
+org\example\repositories\UsuarioRepositoryImpl.class
 org\example\services\LoginServiceCookieImpl.class
 org\example\controllers\LogOutServlet.class
+org\example\models\Usuario.class
 org\example\models\Categoria.class
 org\example\controllers\AgregarCarroServlet.class
 org\example\services\ProductoServiceJdbcImpl.class
@@ -16,6 +20,7 @@ org\example\filters\LoginFiltro.class
 org\example\controllers\ProductoEliminarServlet.class
 org\example\filters\ConexionFilter.class
 org\example\models\Carro.class
+org\example\repositories\UsuarioRepository.class
 org\example\controllers\ProductoFormServlet.class
 org\example\repositories\ProductoRepositoryJdbcImpl.class
 org\example\models\Producto.class

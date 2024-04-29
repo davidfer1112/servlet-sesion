@@ -1,29 +1,25 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Iniciar sesion</title>
-</head>
-<body>
-    <form action="/webapp-session/login" method="post">
-        <div>
-            <label for="username">Usuario:</label>
-            <div>
-                <input type="text" id="username" name="username">
-            </div>
-        </div>
-        <div>
-            <label for="password">Contraseña:</label>
-            <div>
-                <input type="password" id="password" name="password">
-            </div>
-        </div>
-        <div>
-            <input type="submit" value="Login">
-        </div>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-    </form>
+<jsp:include page="layout/header.jsp" />
 
-</body>
-</html>
+<h3>${title}</h3>
+
+<form action="${pageContext.request.contextPath}/login" method="post">
+    <div class="row my-2">
+        <label for="username" class="form-label">Username</label>
+        <div>
+            <input type="text" name="username" id="username" class="form-control">
+        </div>
+    </div>
+    <div class="row my-2">
+        <label for="password" class="form-label">Password</label>
+        <div>
+            <input type="password" name="password" id="password" class="form-control">
+        </div>
+    </div>
+    <div class="row my-2">
+        <input type="submit" value="Login" class="btn btn-primary">
+    </div>
+</form>
+
+<jsp:include page="layout/footer.jsp" />
