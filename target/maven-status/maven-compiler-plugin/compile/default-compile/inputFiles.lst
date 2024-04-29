@@ -1,6 +1,9 @@
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\services\LoginServiceCookieImpl.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\controllers\ProductosServlet.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\repositories\CategoriaRepositoryImpl.java
+D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\models\Usuario.java
+D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\util\ConexionBaseDatosDs.java
+D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\repositories\UsuarioRepositoryImpl.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\services\ProductoService.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\services\ProductoServiceJdbcImpl.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\controllers\AgregarCarroServlet.java
@@ -11,6 +14,7 @@ D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\models\ItemCarro.j
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\controllers\LoginServlet.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\controllers\VerCarroServlet.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\listeners\AplicacionListener.java
+D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\services\UsuarioService.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\repositories\ProductoRepositoryJdbcImpl.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\filters\ConexionFilter.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\services\ServiceJdbcException.java
@@ -18,9 +22,11 @@ D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\util\ConexionBaseD
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\controllers\ActualizarCarroServlet.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\controllers\ProductoEliminarServlet.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\models\Producto.java
+D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\services\UsuarioServiceImpl.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\models\Categoria.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\services\LoginService.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\controllers\ProductoFormServlet.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\models\Carro.java
+D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\repositories\UsuarioRepository.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\controllers\LogOutServlet.java
 D:\U\Cursos\Jakarta\servlet-session\src\main\java\org\example\filters\LoginFiltro.java
