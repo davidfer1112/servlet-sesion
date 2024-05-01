@@ -5,16 +5,14 @@ import java.util.Optional;
 import jakarta.servlet.http.Cookie;
 import java.util.Arrays;
 
-public class LoginServiceCookieImpl implements LoginService{
-
+// @Alternative
+public class LoginServiceCookieImpl implements LoginService {
     @Override
     public Optional<String> getUsername(HttpServletRequest req) {
-        Cookie[] cookies = req.getCookies() != null ? req.getCookies() : new Cookie[0];
-
+        Cookie[] cookies = req.getCookies() != null ? req.getCookies(): new Cookie[0];
         return Arrays.stream(cookies)
-                .filter(cookie -> cookie.getName().equals("username"))
+                .filter(c-> "username".equals(c.getName()))
                 .map(Cookie::getValue)
-                .findFirst();
+                .findAny();
     }
-
 }

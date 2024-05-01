@@ -1,10 +1,12 @@
 package org.example.controllers;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.confings.ProductoServicePrincipal;
 import org.example.models.Producto;
 import org.example.services.ProductoService;
 import org.example.services.ProductoServiceJdbcImpl;
@@ -13,32 +15,32 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.Optional;
 
-@WebServlet("/producto/eliminar")
+@WebServlet("/productos/eliminar")
 public class ProductoEliminarServlet extends HttpServlet {
+
+    @Inject
+    @ProductoServicePrincipal
+    private ProductoService service;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Connection conn = (Connection) req.getAttribute("conn");
-        ProductoService service = new ProductoServiceJdbcImpl(conn);
-
         long id;
-        try{
+        try {
             id = Long.parseLong(req.getParameter("id"));
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             id = 0L;
         }
-        if (id > 0){
+        if (id > 0) {
             Optional<Producto> o = service.porId(id);
-            if (o.isPresent()){
+            if (o.isPresent()) {
                 service.eliminar(id);
-                resp.sendRedirect(req.getContextPath() + "/productos");
-            }else {
-                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Producto no encontrado");
+                resp.sendRedirect(req.getContextPath()+ "/productos");
+            } else {
+                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "No existe el producto en la base de datos!");
             }
-        }else{
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Falta el parametro id");
+        } else {
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Error el id es null, se debe enviar como parametro en la url!");
         }
-
     }
 }

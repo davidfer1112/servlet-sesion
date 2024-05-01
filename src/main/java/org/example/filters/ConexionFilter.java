@@ -14,26 +14,33 @@ import java.sql.SQLException;
 
 @WebFilter("/*")
 public class ConexionFilter implements Filter {
+
+    /*@Inject
+    @MysqlConn
+    private Connection conn;*/
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        try (Connection conn = ConexionBaseDatosDs.getConexion()) {
+        /*try  {
+            Connection connRequest = this.conn;
 
-            if (conn.getAutoCommit()) {
-                conn.setAutoCommit(false);
+            if (connRequest.getAutoCommit()) {
+                connRequest.setAutoCommit(false);
             }
-
-            try {
-                request.setAttribute("conn", conn);
-                chain.doFilter(request, response);
-                conn.commit();
-            } catch (SQLException | ServiceJdbcException e) {
-                conn.rollback();
-                ((HttpServletResponse)response).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
-                e.printStackTrace();
-            }
-        } catch (SQLException | NamingException throwables) {
-            throwables.printStackTrace();
+*/
+        try {
+//                request.setAttribute("conn", connRequest);
+            chain.doFilter(request, response);
+            //connRequest.commit();
+        } catch (ServiceJdbcException e) {
+            //connRequest.rollback();
+            ((HttpServletResponse)response).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
+            e.printStackTrace();
         }
+  /*      } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }*/
     }
 }
+

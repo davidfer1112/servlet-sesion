@@ -1,6 +1,9 @@
 package org.example.repositories;
 
+import jakarta.inject.Inject;
+import org.example.confings.MysqlConn;
 import org.example.models.Usuario;
+import org.example.confings.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,17 +11,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UsuarioRepositoryImpl implements UsuarioRepository{
+@Repository
+public class UsuarioRepositoryImpl implements UsuarioRepository {
 
+    @Inject
+    @MysqlConn
     private Connection conn;
-
-    public UsuarioRepositoryImpl(Connection conn) {
-        this.conn = conn;
-    }
 
     @Override
     public List<Usuario> listar() throws SQLException {
-        return List.of();
+        return null;
     }
 
     @Override
@@ -39,10 +41,10 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
     @Override
     public Usuario porUsername(String username) throws SQLException {
         Usuario usuario = null;
-        try(PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuarios WHERE username = ?")){
+        try (PreparedStatement stmt = conn.prepareStatement("select * from usuarios where username=?")) {
             stmt.setString(1, username);
-            try(ResultSet rs = stmt.executeQuery()){
-                if(rs.next()){
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
                     usuario = new Usuario();
                     usuario.setId(rs.getLong("id"));
                     usuario.setUsername(rs.getString("username"));
@@ -54,3 +56,4 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
         return usuario;
     }
 }
+

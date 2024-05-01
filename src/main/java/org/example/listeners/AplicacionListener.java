@@ -8,46 +8,45 @@ import jakarta.servlet.http.HttpSessionListener;
 import org.example.models.Carro;
 
 @WebListener
-public class AplicacionListener  implements ServletContextListener,
-            ServletRequestListener, HttpSessionListener {
+public class AplicacionListener implements ServletContextListener,
+        ServletRequestListener, HttpSessionListener {
 
     private ServletContext servletContext;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        sce.getServletContext().log("Aplicación iniciada");
+        sce.getServletContext().log("inicializando la aplicacion!");
         servletContext = sce.getServletContext();
-        servletContext.setAttribute("mensaje", "Hola desde el contexto");
+        servletContext.setAttribute("mensaje", "algun valor global de la app!");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        servletContext.log("Aplicación destruida");
-    }
-
-    @Override
-    public void requestDestroyed(ServletRequestEvent sre) {
-        servletContext.log("Petición destruida");
+        servletContext.log("destruyendo la aplicacion!");
     }
 
     @Override
     public void requestInitialized(ServletRequestEvent sre) {
-        servletContext.log("Petición iniciada");
-        sre.getServletContext().setAttribute("mensaje", "Hola desde la petición");
-        sre.getServletRequest().setAttribute("title","Catalogo Servlet");
+        servletContext.log("inicializando el request!");
+        sre.getServletRequest().setAttribute("mensaje", "guardando algun valor para el request");
+        sre.getServletRequest().setAttribute("title", "Catalogo Servlet");
+    }
+
+    @Override
+    public void requestDestroyed(ServletRequestEvent sre) {
+        servletContext.log("destruyendo el request!");
     }
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
-        servletContext.log("Sesión creada HTTP");
-        Carro carro = new Carro();
-        HttpSession session = se.getSession();
-        session.setAttribute("carro", carro);
+        servletContext.log("inicializando la sesion http");
+//        Carro carro = new Carro();
+//        HttpSession session = se.getSession();
+//        session.setAttribute("carro", carro);
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-        servletContext.log("Sesión destruida HTTP");
+        servletContext.log("destruyendo la sesion http");
     }
-
 }
